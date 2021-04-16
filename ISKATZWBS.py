@@ -3,7 +3,7 @@ import math
 import time
 import csv
 
-# 高斯普核相似度
+# GaussianInteractionProfileKernelSimilarity
 def GaussianInteractionProfileKernelSimilarity(biAdjMatrix):
     # 求权重
     widthSum = 0
