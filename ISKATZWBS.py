@@ -97,29 +97,29 @@ def IMKATZWBSMDA(biAdjMatrix, row=None, col=None):
 biAdjMatrix = np.mat(np.load('../data/biAdjMatrix.npy'))
 IMKATZWBSMDA(biAdjMatrix)
 
-# sumCnt = 0
-# for i in range(biAdjMatrix.shape[0]):
-#     for j in range(biAdjMatrix.shape[1]):
-#         if int(biAdjMatrix[i, j]) == 1:
-#             sumCnt += 1
-#
-# BKATZWBSMDAResultTable = []
-# cnt = 1
-# for i in range(biAdjMatrix.shape[0]):
-#     for j in range(biAdjMatrix.shape[1]):
-#         if int(biAdjMatrix[i, j]) == 0:
-#             continue
-#         biAdjMatrix[i, j] = 0
-#         BKATZWBSMDAResultRow = IMKATZWBSMDA(biAdjMatrix, i, j)
-#         BKATZWBSMDAResultTable.append(BKATZWBSMDAResultRow)
-#         biAdjMatrix[i, j] = 1
-#         print(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
-#         print('已完成' + str(float(cnt / sumCnt) * 100) + '%')
-#         cnt += 1
-#
-# with open('./LOOCV.csv', 'w', newline='') as f:
-#     writer = csv.writer(f)
-#     for row in BKATZWBSMDAResultTable:
-#         writer.writerow(row)
+sumCnt = 0
+for i in range(biAdjMatrix.shape[0]):
+    for j in range(biAdjMatrix.shape[1]):
+        if int(biAdjMatrix[i, j]) == 1:
+            sumCnt += 1
+
+BKATZWBSMDAResultTable = []
+cnt = 1
+for i in range(biAdjMatrix.shape[0]):
+    for j in range(biAdjMatrix.shape[1]):
+        if int(biAdjMatrix[i, j]) == 0:
+            continue
+        biAdjMatrix[i, j] = 0
+        BKATZWBSMDAResultRow = IMKATZWBSMDA(biAdjMatrix, i, j)
+        BKATZWBSMDAResultTable.append(BKATZWBSMDAResultRow)
+        biAdjMatrix[i, j] = 1
+        print(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
+        print('已完成' + str(float(cnt / sumCnt) * 100) + '%')
+        cnt += 1
+
+with open('./LOOCV.csv', 'w', newline='') as f:
+    writer = csv.writer(f)
+    for row in BKATZWBSMDAResultTable:
+        writer.writerow(row)
 
 print('完成！')
